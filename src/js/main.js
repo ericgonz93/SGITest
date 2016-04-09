@@ -15,7 +15,7 @@ data.push(json[item][1]);
 
 /* Calculate each year's population by counting how many individuals pass basic if-else (y < [0] && Y >[1].*
  * This however does cause O(100n) time complexity. *
- * Perhaps eliminate having to check already deceased individuals by deleting from array???? */
+ * Perhaps eliminate having to check already deceased individuals by deleting from array? */
 
 
 
