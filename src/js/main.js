@@ -1,30 +1,60 @@
+/*Problem 1:
+* Description
+* Given a list of people with their birth and end years (all between 1900 and 2000),
+* find the year with the most number of people alive.
+*/
+
 var body = d3.select("body");
 
 //Example JSON object for lives
-var basic = {"name1":[1900,1954],"name2":[1943,1988],"name3":[1922,1976]};
+var basic = {"name1":[1900,1954],"name2":[1943,1988],"name3":[1922,1976], "name4":[1933,1954],
+"name5":[1940,1941], "name6":[1958,1959], "name7":[1958,1959], "name8":[1958,1959]};
+var mostYear = [1900];      //Array for the years with the most alive
+var maxAlive = 0;           //How many that were alive during the mostYears
 
 var data = [];
 
-function parseData(json){   //Parsing JSON object filled with start and end years
-
-
-for(item in json){      //Traverse the JSON object for each year
-data.push(json[item][0]);
-data.push(json[item][1]);
-}
-
 /* Calculate each year's population by counting how many individuals pass basic if-else (y < [0] && Y >[1].*
  * This however does cause O(100n) time complexity. *
+ * Time Complexity: O(100n) = O(n) = Theta(n)*
  * Perhaps eliminate having to check already deceased individuals by deleting from array? */
+function mostAlive(json){
+var year = 1900, pop = 0;
+mostYear = [1900];
+maxAlive = 0;
 
+while(year <= 2000){         //100 iterations (1900-2000)
 
+    for(item in json){      //Traverse the JSON object for each person's birth and end years. [Birth,End)
+        if((json[item][0] <= year) && (json[item][1] > year)){  //Check if each person is alive and increment for the year if true.
+            pop++;
+        }
+    }
 
+    if(pop == maxAlive){ //If more than one year has the highest amount of population, add to array.
+        mostYear.push(year);
+    }
+
+    if(pop > maxAlive){ //if larger population is found, set year and maximum population.
+        mostYear.length = 0;
+        mostYear.push(year);
+        maxAlive = pop;
+    }
+
+    data.push(pop);     //Fill in chart data.
+    pop = 0;            //Reset population for next iteration.
+    year++;             //Increment year.
+
+    }
 }
 
-parseData(basic);
+mostAlive(basic);
 
 console.log(basic);
 console.log(data);
+console.log(mostYear);
+console.log(maxAlive);
+
 
 //var data = [15,22,13,55];
 
