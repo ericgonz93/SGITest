@@ -1,2 +1,2 @@
 # SGITest1
-Determining most individuals alive in span of 100 year given a list of beginning and end years
+Determining most individuals alive in span of 100 years given a list of beginning and end years
