@@ -2,6 +2,11 @@ h1{
 color:red;
 }
 
+#contain{
+margin-bottom: 10px;
+margin-left: 10px;
+}
+
 .chart div {        //From D3.js website examples
   font: 10px sans-serif;
   background-color: steelblue;
@@ -21,4 +26,19 @@ color:red;
   fill: white;
   font: 10px sans-serif;
   text-anchor: end;
+}
+
+/*Basic Axis text editing taken from a tutorial*/
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+    fill: black;
 }
