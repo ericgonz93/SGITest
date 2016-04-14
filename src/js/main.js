@@ -12,7 +12,7 @@ var maxAlive = 0;           //How many that were alive during the mostYears
 var firstTest = {"name1":[1900,1954],"name2":[1943,1988],"name3":[1922,1976], "name4":[1933,1954],
 "name5":[1940,1941], "name6":[1958,1959], "name7":[1958,1959], "name8":[1958,1959], "name9": [1978,1999],
 "name10":[1920,1989], "name11":[1900,1964], "name12":[1933,1998], "name13":[1921,1935], "name14": [1900,1978],
-"name15":[1902,1953], "name16":[1907,1986], "name17":[1915,2000], "name18":[1968,2000], "name19": [1937,1984],
+"name15":[1902,1953], "name16":[1907,1986], "name17":[1915,2000], "name18":[1968,2000], "name19": [1937,1984]
 };
 
 var secondTest = {};
@@ -21,8 +21,11 @@ var thirdTest = {"name1":[1900,1901],"name2":[1905,1999],"name3":[1912,1933], "n
 "name5":[1923,1958], "name6":[1912,1967], "name7":[1911,1979], "name8":[1900,2000], "name9": [1933,1958],
 "name10":[1978,1989], "name11":[1917,1989], "name12":[1945,1991], "name13":[1917,1920], "name14": [1900,1948],
 "name15":[1952,1953], "name16":[1978,1999], "name17":[1978,2000], "name18":[1901,2000], "name19": [1939,1944],
-"name20":[1922,1983], "name21":[1912,1984], "name22":[1945,2000], "name23":[1909,1961], "name24": [1919,1986],
+"name20":[1922,1983], "name21":[1912,1984], "name22":[1945,2000], "name23":[1909,1961], "name24": [1919,1986]
 };
+
+var fourthTest = {"name1":[1900,1978],"name2":[1905,1946],"name3":[1912,1913], "name4":[1903,1925]};
+
 /* End: Data Sets */
 
 var data = [];      //Empty array for chart creation
@@ -63,8 +66,8 @@ while(year <= 2000){           //100 iterations (1900-2000)
 /* Begin Program Execution*/
 //mostAlive(firstTest);
 //mostAlive(secondTest);
-mostAlive(thirdTest);
-
+//mostAlive(thirdTest);
+mostAlive(fourthTest);
 
 var maxYears = " ";
 
@@ -103,20 +106,20 @@ var bar = chart.selectAll("g")
     .attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
 
 chart.append("g")
-      .attr('class', 'x axis')
-      .attr("transform", "translate(0," + (maxHeight) + ")")
-      .call(xAxis)
-      .selectAll('text')
-      .attr("x", "-9px")
-      .attr("dx","-.95em")
-      .attr("transform", "rotate(-90)" );
+     .attr('class', 'x axis')
+     .attr("transform", "translate(0," + (maxHeight) + ")")
+     .call(xAxis)
+     .selectAll('text')
+     .attr("x", "-9px")
+     .attr("dx","-.95em")
+     .attr("transform", "rotate(-90)" );
 
 bar.append("rect")
     .attr("width", barWidth - 1)
     .attr("x", barWidth/2 )
     .attr("height", y)
     .attr("y", function(d){ return maxHeight - y(d);})
-    .style("fill", function(d){return d == maxAlive ? "gold": "steelblue";});       //Fill gold in for top years.
+    .style("fill", function(d){return d == maxAlive ? "gold": "teal";});       //Fill gold in for top years.
 
 bar.append("text")
     .style("fill", "black")
